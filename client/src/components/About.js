@@ -7,6 +7,7 @@ function About(){
     const a=useContext(NoteContext)
     // useEffect is used whenever we are updating something 
     // it will accept a function that changes the code and takes other parameter as an array ̀
+    // use effect is like componentDidMount Of Class component
   useEffect(()=>{a.update(5000)},[])    //will update name and age after 5 sec
 
     return(
