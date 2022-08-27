@@ -1,0 +1,91 @@
+From starting 42 video:
+We USED MONGODB AS DATABASE IN OUR BACKEND 
+Role of mongoose is to manage the databse and to connect to the database
+
+1. we created a file db.js and wrote the function code for connecting to the db.
+2. then we exported function from db.js //db.js only has the code to connect to the db
+
+________
+3. then we created a file index.js in the backend folder and connected our database to the express app .//
+4. EXPRESS is a framework based on node that help in creating server side web application, that helps to manage routes and servers 
+5. we installed the express npm package and then we copied the express code from the net
+6. we created a Models and Routes folders 
+7. MODELS contain the blueprint of how our data will be stored in the database which is,models provide a clean interface with our MONGODB database through mongoose libraray.
+8. ROUTER is a javaScript object used to map URLs to functions,IN NODE.JS routing refers to how the application endpoint respond to the client request.
+9. then inside models folder we created Notes.js and User.js model in which we created schemas
+10. A SCHEMA is a json(javaScript Object Notation) that defines the structure and the contents of our data
+11. Note: who will check or validate our schemas --> this will be done by express-validator which is discussed later
+12. now after creating the schemas we can export it by converting it to model we will be exporting it by  
+// module.exports=mongoose.model('whatever name ypu want to keep of model',Schemaname which we defined)
+
+eg. in case of user schema   module.exports=mongoose.model('user',UserSchema);
+13.  Now in the ROUTES folder we will be creating the routes auth.js and userNotes.js
+routes basically contains the endpoint when the user clicks on the particular url.
+
+auth.js --> will contain authentication related endpoint
+userNotes.js --> contain notes related endpoints
+
+
+      ----------- 45TH VIDEO ONWARDS---------
+14.
+
+--------- Validation using express validator-------------
+--------46th video--------
+npm install --save express-validator
+
+---47th------
+crreated a collection in thunderclient 
+
+------48th-----
+
+hashing of password
+
+
+1.whenever the user sign up then the password is stored in the DB as a hash
+2.when the user enter the password whule signinf in then the password is converted to hash
+and the hash is matched with the the hash present in db.
+3.if both are matched then user can login
+
+4. BUT ATTACKER can attack if a common password is choosen by the user
+5. bcoz the attacker has the rainbow table hashes of common passwords.
+
+6. For this we use the method of Salt and pepper
+
+7. Salt means adding the extra string while storing password in the database
+
+8. eg.password is suppose   ---   dev then by using salt it will be stored as dev#54^1 
+where #54^1 is the hash.
+
+------49th------
+we will be using bcrypt.js for hasing of password which a npm package for doing this
+
+npm install bcryptjs
+
+1.  const salt=await bcrypt.genSalt(10); //this will return a promise thats why we used await
+2.const secPass =await bcrypt.hash(req.body.password,salt); /this will return a promise thats why we used await
+
+Now For the authetification of the user we will be using JWT TOKEN that is JSON WEB TOKEN
+
+JWT-{it is used for secure communication between client and the server}
+
+whenever a json data is sent we will sign it using JWT TOKEN
+
+-----50th video-----
+adding new endpoint that is /login
+
+----51st video----
+creating getUser endpoint and fetching the user data using JWT token which we got when we login
+
+--------52nd  video-----
+added fetchNotes and addNote endpoint 
+
+-----53rd video----
+will be adding updateNote endpoint
+ for update we use put request
+
+with differnt request like POST<GET AND PUT we can handle the same endpoint and perform different action on POST,GET and PUT
+___54th video---
+We will create Delete Node endpoints
+using Delete request
+__55thvideo--
+from this video we will start will clent side and make frontend in react
