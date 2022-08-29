@@ -203,3 +203,13 @@ const About = () => {
 export default About
 
 ---------------------59th video-----------------------
+useLocation hook it is imported from react router dom
+and when we let location=useLocation();
+useEffect(()=>{
+    console.log(location.pathname);
+
+},[])
+
+------60th-----
+video
+

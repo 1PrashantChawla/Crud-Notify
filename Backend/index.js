@@ -25,7 +25,7 @@ app.use('/api/userNotes',require('./routes/userNotes'))
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`)})
+  console.log(`I-Notebook listening on port http://localhost:${port}`)})
 
 
 
