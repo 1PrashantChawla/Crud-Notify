@@ -1,7 +1,11 @@
 //  IN db.JS WE WROTE A FUNCTION THAT WILL CONNECT US TO THE DATABASE thats it
 
+require('dotenv').config();
 const mongoose=require ("mongoose");
-const mongoURI="mongodb+srv://prashant:hello12345@cluster0.aabiz.mongodb.net/Inotebook?retryWrites=true&w=majority"
+
+const mongoURI=process.env.DB_URI;
+
+
 const connectToMongo=async ()=>{
     try {
    mongoose.connect(mongoURI,()=>{

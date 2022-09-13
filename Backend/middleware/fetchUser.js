@@ -1,7 +1,7 @@
 // middleware is a function which is called whenever -login required routes- are requestion
 
 var jwt=require('jsonwebtoken')
-const JWT_SECRET = 'PrashantIsHappy'
+const JWT_SECRET = process.env.JWT_TEXT;
 
 const fetchUser=(req,res,next)=>{
 // get the user form the JWT token and add it to req object

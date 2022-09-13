@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 var fetchUser=require('../middleware/fetchUser')
 const { body, validationResult } = require('express-validator');
 
-const JWT_SECRET = 'PrashantIsHappy'
+const JWT_SECRET = process.env.JWT_TEXT;
 
 
 // ROUTE1:CREATE USER ENDPOINT
