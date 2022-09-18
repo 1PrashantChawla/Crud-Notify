@@ -3,11 +3,16 @@
 
 const connectToMongo=require('./db')
 const express = require('express')
+var cors = require('cors')
 connectToMongo();
 const app = express()
-const port = 8000
+const port = 8000;
 
 
+
+
+// cors for accesing the backend api running on local host
+app.use(cors())
 //MIDDLEWARE so taht we can access body
 app.use(express.json())
 
@@ -18,7 +23,9 @@ app.use(express.json())
 
 
 // AVAILABLE ROUTES
+// -----AUTHENTIFICATION RELATED------
 app.use('/api/auth',require('./routes/auth'))
+// /------- USERNOTES-----
 app.use('/api/userNotes',require('./routes/userNotes'))
 
 
