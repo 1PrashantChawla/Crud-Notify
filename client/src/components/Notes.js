@@ -3,7 +3,7 @@ import NoteContext from '../context/notes/NoteContext'
 import AddNote from './AddNote';
 import NoteItem from './NoteItem';
 
-const Notes = () => {
+const Notes = (props) => {
 
     const context = useContext(NoteContext)
     const { notes, getNotes,editNote } = context; //importing what we need using destructuring
@@ -27,6 +27,8 @@ const Notes = () => {
         setNote({...note,[e.target.name]:e.target.value})
      //    whatever properties are there in note will remain same except the name will be replaced by the input value bt the user
         //spread operator will only change the required field
+
+        
      }
     //  ------UPDATE BUTTON -----
      const handleClick=(e)=>{
@@ -34,8 +36,10 @@ const Notes = () => {
         //  ---for updating in backend----
          editNote(note.id,note.etitle,note.edescription,note.etag)
         //  ---frontend---
+          
         
          refClose.current.click()// for closing when UPDATE btn is pressed
+         props.showAlert("Succesfully Updated","success")
          console.log('update'); 
      }
 
@@ -65,13 +69,13 @@ const Notes = () => {
 
                                 <div className="mb-3">
                                     <label htmlFor="etitle" className="form-label">Title</label>
-                                    <input type="text" placeholder="Title must be at least 3 characters" minlength="3" className="form-control" id="etitle" name='etitle' aria-describedby="emailHelp" onChange={onChange} value={note.etitle}/>
+                                    <input type="text" placeholder="Title must be at least 3 characters" minLength='3' className="form-control" id="etitle" name='etitle' aria-describedby="emailHelp" onChange={onChange} value={note.etitle}/>
 
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="edescription" className="form-label">Description</label>
-                                    <input type="text" placeholder="Description must be at least 5 characters" minlength="5" className="form-control" id="edescription" name='edescription' onChange={onChange} value={note.edescription}/>
+                                    <input type="text" placeholder="Description must be at least 5 characters" minLength="5" className="form-control" id="edescription" name='edescription' onChange={onChange} value={note.edescription}/>
                                 </div>
 
 
@@ -86,14 +90,17 @@ const Notes = () => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" ref={refClose} className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary" onClick={handleClick}>Update</button>
+                            <button type="submit"  disabled={note.etitle.length<5||note.edescription.length<3} className="btn btn-primary" onClick={handleClick}>Update</button>
                         </div>
                     </div>
                 </div>
             </div>
             {/* modal */}
             <div className='row my-3'>
-
+                    <div className='container mx-2'>
+                        {/* if notes not available show this */}
+                    {notes.length===0 && 'No Notes To Display'}
+                    </div>
 
                 {
                     notes.map((key) => {

@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
 
 const Alert = (props) => {
-  const [alert,setAlert]=useState("default")
+  const capitalize = (word) => {
+
+    if(word=="danger"){
+      word="error"
+    }
+    const lower = word.toLowerCase();
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  }
   return (
-    <div>
-      <div className="alert alert-primary" role="alert">
-  {props.message} 
-</div>
+    <div style={{ height: '70px' }}>
+      {props.alert
+
+        &&
+
+        <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
+          <strong>{capitalize(props.alert.type)}</strong>:{props.alert.msg}
+        </div>
+      }
+
     </div>
   )
 }

@@ -41,14 +41,7 @@ const response = await fetch(`${host}/api/userNotes/addNote`, {
 // const json= response.json(); 
 // note=null;
 
-const note={
-  "title": title,
-  "description": description,
-  "tag": tag,
-  "__v": 0
-
-}
-
+const note=await response.json()
 setNote(notes.concat(note))
 console.log("adding Note");
 
@@ -97,9 +90,9 @@ console.log("adding Note");
     for (let index = 0; index < newNotes.length; index++) {
       let element=newNotes[index];
       if(newNotes[index]._id===id){
-        element.title=title;
-        element.description=description;
-        element.tag=tag;
+        newNotes[index].title=title;
+        newNotes[index].description=description;
+        newNotes[index].tag=tag;
         break;
       }
       
@@ -120,4 +113,4 @@ console.log("adding Note");
         </NoteContext.Provider>
     )
 }
-export default NoteState
+export default NoteState 

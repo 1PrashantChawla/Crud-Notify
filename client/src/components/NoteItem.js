@@ -13,7 +13,7 @@ const NoteItem = (props) => {
     <div className='m-2 col-3'>
 
 
-      <div className="card my-3" >
+      <div className="card my-3 " >
      
         <div className="card-body">
           

@@ -3,7 +3,8 @@ import Notes from './Notes';
 
 
 
-function Home() {
+function Home(props) {
+  const {showAlert}=props;
 
   return (
 
@@ -11,7 +12,7 @@ function Home() {
 
       
 
-<Notes/>
+<Notes showAlert={showAlert}/>
 
       </div>
 

@@ -62,10 +62,10 @@ let location=useLocation();
 
                         </ul>
 
-                    {/* search Box */}
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                                <button className="btn btn-outline-success" type="submit">Search</button>
+                    {/* Login signup buttons */}
+                        <form className="d-flex" >
+                            <Link className='btn btn-primary mx-2' to="/login" role="button">Login</Link>
+                            <Link className='btn btn-primary mx-2' to="/signup" role="button">Signup</Link>
                         </form>
 
                     </div>
