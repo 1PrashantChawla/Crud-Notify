@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = (props) => {
 
-const [credentials,setCredentials]=useState({name:'',email:'',password:'',cpassword:''})
+const [credentials,setCredentials]=useState({name:'',email:'',password:'',Cpassword:''})
  let navigate=useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +39,8 @@ const [credentials,setCredentials]=useState({name:'',email:'',password:'',cpassw
        
     <div className='container'>
       <form onSubmit={handleSubmit}>
+      <h1 className='text-center mb-4'>🙏🏻Welcome🙏🏻</h1>
+      <h5 className='text-center mb-4'>Signup-Here</h5>
         {/* name */}
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -59,7 +61,7 @@ const [credentials,setCredentials]=useState({name:'',email:'',password:'',cpassw
         {/* confirm password */}
         <div className="form-group my-2">
           <label htmlFor="Cpassword">Confirm Password</label>
-          <input type="password" onChange={onChange} id="Cpassword" name='cpassword' value={credentials.cpassword} className="form-control" placeholder="Confirm Password"  minLength={3} required/>
+          <input type="password" onChange={onChange} id="password" name='Cpassword' value={credentials.Cpassword} className="form-control" placeholder="Confirm Password"  minLength={3} required/>
         </div>
 
         <button type="submit" className="btn btn-primary" >Submit</button>

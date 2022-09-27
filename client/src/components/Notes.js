@@ -1,16 +1,24 @@
 import React, { useContext, useEffect, useRef,useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NoteContext from '../context/notes/NoteContext'
 import AddNote from './AddNote';
 import NoteItem from './NoteItem';
 
 const Notes = (props) => {
-
+let navigate= useNavigate();
     const context = useContext(NoteContext)
     const { notes, getNotes,editNote } = context; //importing what we need using destructuring
     const [note,setNote]=useState({id:"",etitle:"",edescription:"",etag:""})
 
     useEffect(() => {
-        getNotes()
+        if (localStorage.getItem('token')) {
+            // if logged in 
+            getNotes()
+
+        }
+        else{
+            navigate('/login');
+        }
     }, [])
 // -----refs-----
     const ref = useRef();

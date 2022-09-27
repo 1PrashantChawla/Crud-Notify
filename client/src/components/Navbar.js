@@ -1,12 +1,18 @@
 import React from 'react'
-import { Link, useLocation} from "react-router-dom";
+import { Link, useLocation, useNavigate} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
 
 function Navbar(props) {
 // location is used to add active class to the nav component whenever the navheading is clicked
+let navigate=useNavigate();
 let location=useLocation();
+const handleLogout=()=>{
+    localStorage.removeItem('token');
+    navigate('/login');
+
+}
 
 
     return (
@@ -25,7 +31,7 @@ let location=useLocation();
 
                             <li className="nav-item">
                                 
-                                <Link className={ `nav-link ${location.pathname==="/"? "active":""}`} aria-current="page" to="/">Home</Link>
+                                <Link className={ `nav-link ${location.pathname==="/"? "active":""}`} aria-current="page" to="/">My Notes</Link>
                             </li>
 
 
@@ -34,39 +40,20 @@ let location=useLocation();
                             </li>
 
 
-                            <li className="nav-item dropdown">
-
-
-                                <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
-                                </Link>
-
-
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr className="dropdown-divider"/></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
 
 
 
-                            </li>
-
-
-                            <li className="nav-item">
-                                <a className="nav-link disabled">Disabled</a>
-                            </li>
+                           
 
 
 
                         </ul>
 
                     {/* Login signup buttons */}
-                        <form className="d-flex" >
+                      {!localStorage.getItem('token')? <form className="d-flex" >
                             <Link className='btn btn-primary mx-2' to="/login" role="button">Login</Link>
                             <Link className='btn btn-primary mx-2' to="/signup" role="button">Signup</Link>
-                        </form>
+                        </form> :  <button className='btn btn-primary mx-2' onClick={handleLogout}  role="button">Logout</button>}
 
                     </div>
                 </div>

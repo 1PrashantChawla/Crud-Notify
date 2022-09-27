@@ -37,7 +37,7 @@ function App() {
     <NoteState>
 
       <Router>
-        <Navbar brand="I-Notebook" />
+        <Navbar brand="Crud Notify" />
         <Alert alert={alert} />
         <div className='container'>
 

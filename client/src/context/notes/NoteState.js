@@ -14,7 +14,7 @@ const getNotes=async()=>{
     method: 'GET', 
     headers: {
       'Content-Type': 'application/json',
-      'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjMwNWRmNmY2M2QzY2Y0ZjU1MjMyYzc4In0sImlhdCI6MTY2MTMyOTI2M30.M2iNKB0Mi0iYrvioqUUa8Luj1EoLQSxXf8Y1kRcSeQc'
+      'auth-token': localStorage.getItem('token')
       // 'Content-Type': 'application/x-www-form-urlencoded',
     }
    
@@ -33,7 +33,7 @@ const response = await fetch(`${host}/api/userNotes/addNote`, {
   method: 'POST', 
   headers: {
     'Content-Type': 'application/json',
-    'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjMwNWRmNmY2M2QzY2Y0ZjU1MjMyYzc4In0sImlhdCI6MTY2MTMyOTI2M30.M2iNKB0Mi0iYrvioqUUa8Luj1EoLQSxXf8Y1kRcSeQc'
+    'auth-token': localStorage.getItem('token')
     // 'Content-Type': 'application/x-www-form-urlencoded',
   },
   body: JSON.stringify({title,description,tag})
@@ -55,7 +55,7 @@ console.log("adding Note");
       method: 'DELETE', 
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjMwNWRmNmY2M2QzY2Y0ZjU1MjMyYzc4In0sImlhdCI6MTY2MTMyOTI2M30.M2iNKB0Mi0iYrvioqUUa8Luj1EoLQSxXf8Y1kRcSeQc'
+        'auth-token': localStorage.getItem('token')
      
       },
       
@@ -76,7 +76,7 @@ console.log("adding Note");
       method: 'PUT', 
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjMwNWRmNmY2M2QzY2Y0ZjU1MjMyYzc4In0sImlhdCI6MTY2MTMyOTI2M30.M2iNKB0Mi0iYrvioqUUa8Luj1EoLQSxXf8Y1kRcSeQc'
+        'auth-token': localStorage.getItem('token')
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify({title,description,tag})

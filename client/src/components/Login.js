@@ -19,8 +19,8 @@ const Login = (props) => {
     console.log(json);
     if (json.success) {
 // if success if truw storing the auth token in the local storage
+localStorage.setItem('token', json.authtoken);
 props.showAlert("Logged In Successfully !","success")
-      localStorage.setItem('token', json.authtoken);
       navigate("/")
       // redirect
     }
@@ -34,6 +34,8 @@ props.showAlert("Logged In Successfully !","success")
   }
   return (
     <div>
+      <h1 className='text-center mb-4'>🙏🏻Welcome🙏🏻</h1>
+      <h5 className='text-center mb-4'>Login-Here</h5>
       <form onSubmit={handleSubmit}>
         {/* email */}
         <div className="form-group">
